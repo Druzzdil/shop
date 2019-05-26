@@ -17,6 +17,7 @@ const store = createStore(
     applyMiddleware(sagaMiddleware)
 );
 sagaMiddleware.run(rootSaga);
+console.log(store.getState(), 'store');
 ReactDOM.render(
     <Router history={createBrowserHistory}>
         <Provider store={store}>

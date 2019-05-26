@@ -1,10 +1,10 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
-import {FETCH_USERS, fetchUsersSuccess } from './actions'
+import {fetchProductSuccess, FETCH_PRODUCTS} from './index'
 import axios from 'axios';
 
 function fetchUsers(){
     return new Promise((resolve, reject) => {
-        axios.get(`http://localhost:3000/employees`)
+        axios.get('http://localhost:3000/employees')
             .then(response => {
                 resolve(response);
             })
@@ -14,15 +14,16 @@ function fetchUsers(){
     });
 }
 
-function* userWorker(action) {
+function* productsWorker(action) {
     try {
         const response = yield call(fetchUsers, action.payload);
-        yield put(fetchUsersSuccess(response.data));
-    } catch(err) {
-        console.log(err)
+        console.log(response.data, '0000000');
+        yield put(fetchProductSuccess(response.data));
+    } catch(error) {
+        console.log(error, 'error');
     }
 }
 
-export function* getUsersWatcher() {
-    yield takeLatest(FETCH_USERS, userWorker);
+export function* fetchProductsWatcher() {
+    yield takeLatest(FETCH_PRODUCTS, productsWorker);
 }

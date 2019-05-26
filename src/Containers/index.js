@@ -1,16 +1,13 @@
 import Main from '../organisms/main/main'
 import { connect } from 'react-redux'
+import {fetchProduct} from '../Stores/Product/index'
 
-const mapStateToProps = state => {
-    return {
-        user: state.user.users,
-        payload: state.user.payload,
-        userPayload: state.user.userPayload
-    };
-};
+const mapStateToProps = state => ({
+    products: state.productReducer.products,
+});
 
 const mapDispatchToProps = dispatch => ({
-    product: () => console.log('test')
+    onDidMount: () => dispatch(fetchProduct())
 });
 
 export default connect(

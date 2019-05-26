@@ -38,7 +38,6 @@ export default function users(state = initialValues, action){
                 isFetching: false
             };
         case BOOK_SEET:
-            console.log(action.payload, 'reducer');
             return {
                 ...state,
                 userPayload: action.payload
