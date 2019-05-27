@@ -8,24 +8,44 @@ export default class Main extends React.Component {
     }
 
     render(){
+        console.log(this.props, 'props');
         return (
             <div>
                 <Formik
-                    intitialValues={{username: ""}}
+                    intitialValues={{
+                        first_name: "",
+                        last_name: "",
+                        email: "",
+                    }}
                     validate={values => {
                         let error = {}
-                        if (!values.username){
-                            error.username = 'required'
+                        if (!values.first_name){
+                            error.first_name = 'required'
+                        }
+                        if (!values.last_name){
+                            error.first_name = 'required'
+                        }
+                        if (!values.email){
+                            error.first_name = 'required'
                         }
                         return error
                     }}
-                    onSubmit={values=>console.log(values)}
+                    onSubmit={values=> {
+                        this.props.addProduct(values)
+                        console.log(values, 'values');
+                    }}
                 >
                     {() => (
                         <Form>
-                            <label htmlFor="username">Username</label>
-                            <Field type="text" name="username" id="username"/>
-                            <ErrorMessage style={{color: 'red'}} name="username" component="div"/>
+                            <label htmlFor="first_name">first name</label>
+                            <Field type="text" name="first_name" id="first_name"/>
+                            <label htmlFor="last_name">last name</label>
+                            <Field type="text" name="last_name" id="last_name"/>
+                            <label htmlFor="email">email</label>
+                            <Field type="text" name="email" id="email"/>
+                            <ErrorMessage style={{color: 'red'}} name="first_name" component="div"/>
+                            <ErrorMessage style={{color: 'red'}} name="last_name" component="div"/>
+                            <ErrorMessage style={{color: 'red'}} name="email" component="div"/>
                             <button type="submit">Submit</button>
                         </Form>
                     )}

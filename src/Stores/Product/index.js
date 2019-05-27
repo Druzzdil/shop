@@ -3,12 +3,18 @@ import {
     fetchProductSuccess,
     FETCH_PRODUCTS,
     fetchProduct,
-    fetchProductFailed
+    fetchProductFailed,
+    addProduct,
+    addProductSuccess,
+    addProductFailure
 } from './actions'
 export {
     fetchProduct,
     fetchProductSuccess,
     productReducer,
     FETCH_PRODUCTS,
-    fetchProductFailed
+    fetchProductFailed,
+    addProduct,
+    addProductSuccess,
+    addProductFailure
 }

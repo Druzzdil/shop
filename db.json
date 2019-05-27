@@ -1,0 +1,80 @@
+{
+  "employees": [
+    {
+      "id": 1,
+      "first_name": "Sebastian",
+      "last_name": "Eschweiler",
+      "email": "sebastian@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "first_name": "Ann",
+      "last_name": "Smith",
+      "email": "ann@codingthesmartway.com"
+    },
+    {
+      "id": 6,
+      "first_name": "Fred",
+      "last_name": "Blair",
+      "email": "freddyb34@gmail.com"
+    },
+    {
+      "id": 9,
+      "first_name": "Fred",
+      "last_name": "Blair",
+      "email": "freddyb34@gmail.com"
+    },
+    {
+      "id": 91,
+      "first_name": "iO",
+      "last_name": "11",
+      "email": "fred22dyb34@gmail.com"
+    },
+    {
+      "id": 912,
+      "first_name": "iO11",
+      "last_name": "131",
+      "email": "fred322dyb34@gmail.com"
+    },
+    {
+      "payload": {},
+      "id": 913
+    },
+    {
+      "payload": {
+        "type": "ADD_PRODUCT"
+      },
+      "id": 914
+    },
+    {
+      "id": 915
+    },
+    {
+      "id": 916
+    },
+    {
+      "id": 917
+    },
+    {
+      "id": 918
+    },
+    {
+      "id": 919
+    },
+    {
+      "id": 920
+    },
+    {
+      "id": 921
+    },
+    {
+      "id": 922
+    }
+  ]
+}
