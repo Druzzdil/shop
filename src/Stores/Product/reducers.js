@@ -2,17 +2,19 @@ import {ADD_PRODUCT, ADD_PRODUCT_FAILURE, ADD_PRODUCT_SUCCESS, FETCH_PRODUCTS, F
 
 const initialState = {
     loading: false,
-    products: [] || {}
+    products: [],
 };
 
 export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS:
+            console.log(action, 'aiiaiiaia');
             return {
                 ...state,
-                loading: true
+             loading:true
             };
         case FETCH_PRODUCTS_SUCCESS:
+            console.log(action, 'fetch');
             return {
                 ...state,
                 products: action.payload,
@@ -27,7 +29,7 @@ export default (state = initialState, action) => {
             console.log(action, 'reducer');
             return {
                 ...state,
-                products: action.payload,
+                products: [action.payload],
                 loading: false
             }
         case ADD_PRODUCT_FAILURE:

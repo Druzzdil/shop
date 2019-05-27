@@ -10,6 +10,8 @@ import createSagaMiddleware from 'redux-saga'
 import {Router, Route} from 'react-router';
 import createBrowserHistory from './history'
 import Main from './Containers/index'
+import AddProduct from './organisms/addProduct/index'
+
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -21,7 +23,8 @@ console.log(store.getState(), 'store');
 ReactDOM.render(
     <Router history={createBrowserHistory}>
         <Provider store={store}>
-            <Route path="/" component={Main}/>
+            <Route path="/main" component={Main}/>
+            <Route path="/addProduct" component={AddProduct}/>
         </Provider>
     </Router>
     ,document.getElementById('root')

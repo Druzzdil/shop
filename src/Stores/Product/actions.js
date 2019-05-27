@@ -18,8 +18,10 @@ export const fetchProductFailed = error => ({
     error
 })
 
-export const addProduct = () => ({
-    type: ADD_PRODUCT
+export const addProduct = (payload, id) => ({
+    type: ADD_PRODUCT,
+    payload,
+    id
 })
 
 export const addProductSuccess = payload => ({

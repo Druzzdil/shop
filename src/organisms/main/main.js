@@ -1,6 +1,6 @@
 import React from 'react'
 import {Formik, Form, Field, ErrorMessage} from 'formik'
-
+import AddProduct from '../addProduct/index'
 export default class Main extends React.Component {
 
     componentDidMount(){
@@ -8,7 +8,6 @@ export default class Main extends React.Component {
     }
 
     render(){
-        console.log(this.props, 'props');
         return (
             <div>
                 <Formik
@@ -31,7 +30,7 @@ export default class Main extends React.Component {
                         return error
                     }}
                     onSubmit={values=> {
-                        this.props.addProduct(values)
+                        this.props.addProduct(values);
                         console.log(values, 'values');
                     }}
                 >
@@ -50,6 +49,7 @@ export default class Main extends React.Component {
                         </Form>
                     )}
                 </Formik>
+                {this.props.products.map(item=>item.payload.email)}
             </div>
         )
     }

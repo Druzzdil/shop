@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    onDidMount: () => dispatch(fetchProduct()),
+    onDidMount: (payload) => dispatch(fetchProduct(payload)),
     addProduct: (payload) => dispatch(addProduct(payload))
 });
 
