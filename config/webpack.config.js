@@ -152,7 +152,7 @@ module.exports = function(webpackEnv) {
       path: isEnvProduction ? paths.appBuild : undefined,
       // Add /* filename */ comments to generated require()s in the output.
       pathinfo: isEnvDevelopment,
-      // There will be one main bundle, and one file per asynchronous chunk.
+      // There will be one addProductForm bundle, and one file per asynchronous chunk.
       // In development, it does not produce real files.
       filename: isEnvProduction
         ? 'static/js/[name].[contenthash:8].js'

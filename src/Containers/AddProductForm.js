@@ -1,4 +1,4 @@
-import Main from '../organisms/main/main'
+import AddProductForm from '../organisms/addProductForm/index'
 import { connect } from 'react-redux'
 import {fetchProduct, addProduct} from '../Stores/Product/index'
 
@@ -14,4 +14,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Main)
+)(AddProductForm)
