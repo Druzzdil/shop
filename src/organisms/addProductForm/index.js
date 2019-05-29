@@ -1,60 +1,15 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
-import {Formik, Form} from 'formik'
+import {Formik, Form, Field} from 'formik'
 import RaisedButton from 'material-ui/RaisedButton';
 import InputElement from './inputElement'
 import FormStyles from './formStyles'
 import ButtonWrapper from './buttonWrapper'
-//
-// export default class AddProductForm extends React.Component {
-//
-//     componentDidMount(){
-//         this.props.onDidMount()
-//     }
-//
-//     render(){
-//         return (
-//             <Container>
-                {/*<Formik*/}
-                    {/*intitialValues={{*/}
-                        {/*title: "",*/}
-                        {/*price: "",*/}
-                    {/*}}*/}
-                    {/*validate={values => {*/}
-                        {/*let error = {}*/}
-                        {/*if (!values.title){*/}
-                            {/*error.title = 'required'*/}
-                        {/*}*/}
-                        {/*if (!values.price){*/}
-                            {/*error.price = 'required'*/}
-                        {/*}*/}
-                        {/*return error*/}
-                    {/*}}*/}
-                    {/*onSubmit={values=> {*/}
-                        {/*this.props.addProduct(values);*/}
-                        {/*console.log(values, 'values');*/}
-                    {/*}}*/}
-                {/*>*/}
-                    {/*{() => (*/}
-                        {/*<Form>*/}
-                            {/*<label htmlFor="title">first name</label>*/}
-                            {/*<Field type="text" name="title" id="first_name"/>*/}
-                            {/*<label htmlFor="price">last name</label>*/}
-                            {/*<Field type="text" name="price" id="last_name"/>*/}
-                            {/*<ErrorMessage style={{color: 'red'}} name="title" component="div"/>*/}
-                            {/*<ErrorMessage style={{color: 'red'}} name="price" component="div"/>*/}
-                            {/*<RaisedButton type="submit">Submit</RaisedButton>*/}
-                        {/*</Form>*/}
-                    {/*)}*/}
-                {/*</Formik>*/}
-//             </Container>
-//         )
-//     }
-// }
+import './styles.scss'
+import {withRouter} from "react-router-dom";
 
-export default class AddProductForm extends React.Component {
+class AddProductForm extends React.Component {
 
     componentDidMount(){
         this.props.onDidMount()
@@ -67,7 +22,7 @@ export default class AddProductForm extends React.Component {
                 <CssBaseline />
                 <div>
                     <Typography component="h1" variant="h5">
-                        <h2 style={{textAlign: 'center', fontSize: "27px", color: '#22607a'}}>Nexus</h2>
+                        <h2 style={{textAlign: 'center', fontSize: "27px", color: '#22607a'}}>Hyarda</h2>
                     </Typography>
                     <Formik
                         intitialValues={{
@@ -86,17 +41,19 @@ export default class AddProductForm extends React.Component {
                         }}
                         onSubmit={values=> {
                             this.props.addProduct(values);
-                            console.log(values, 'values');
+                            this.props.history.push("/dashboard");
                         }}
                     >
                         {() => (
                             <Form>
                                 <FormStyles>
                                     <InputElement>
-                                        <TextField type="text" name="title" id="title" label="Title"/>
+                                        <Field className="input-field" type="text" name="title" id="title" label="Title"/>
+                                        <label htmlFor="title">Title</label>
                                     </InputElement>
                                     <InputElement>
-                                        <TextField type="text" name="price" id="price" label="Price"/>
+                                        <Field  className="input-field" type="text" name="price" id="price" label="Price"/>
+                                        <label htmlFor="title">Price</label>
                                     </InputElement>
                                     <ButtonWrapper>
                                         <RaisedButton type="submit">Add Product</RaisedButton>
@@ -110,3 +67,5 @@ export default class AddProductForm extends React.Component {
         );
     }
 }
+
+export default withRouter(AddProductForm)

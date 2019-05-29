@@ -26,6 +26,6 @@ const FormStyles = styled.div`
     padding-left: 25px;
     display: block;
     margin: 0 auto;
-    margin-top: 15%
+    margin-top: 8%
 `;
 export default FormStyles

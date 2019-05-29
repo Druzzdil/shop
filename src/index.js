@@ -11,7 +11,8 @@ import {Router, Route} from 'react-router';
 import createBrowserHistory from './history'
 import AddProductPage from './Containers/AddProductPage'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import Dashboard from './Containers/Dashboard'
+import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(
@@ -20,11 +21,13 @@ const store = createStore(
 );
 sagaMiddleware.run(rootSaga);
 console.log(store.getState(), 'store');
+
 ReactDOM.render(
     <Router history={createBrowserHistory}>
         <MuiThemeProvider>
             <Provider store={store}>
-                <Route path="/" component={AddProductPage}/>
+                <Route exact path="/" component={AddProductPage}/>
+                <Route path="/dashboard" component={Dashboard}/>
             </Provider>
         </MuiThemeProvider>
     </Router>
