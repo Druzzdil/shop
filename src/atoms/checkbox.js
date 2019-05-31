@@ -1,15 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 
-const Checkbox = ({ type = 'checkbox', name, checked = false, onChange, id, value}) => (
-    <input type={type} name={name} checked={checked} onChange={onChange} id={id} value={value}/>
+const Checkbox = ({ label, isSelected, onCheckboxChange, id }) => (
+    <div className="form-check">
+        <label>
+            <input
+                id={id}
+                type="checkbox"
+                name={label}
+                checked={isSelected}
+                onChange={onCheckboxChange}
+                className="form-check-input"
+            />
+            {label}
+        </label>
+    </div>
 );
-
-Checkbox.propTypes = {
-    type: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    checked: PropTypes.bool,
-    onChange: PropTypes.func.isRequired,
-};
 
 export default Checkbox;

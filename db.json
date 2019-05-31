@@ -2,199 +2,43 @@
   "employees": [
     {
       "payload": {
-        "first_name": "awdbkb",
-        "last_name": "bh",
-        "email": "b"
+        "title": "test",
+        "price": "10",
+        "size": "L"
+      },
+      "id": 1
+    },
+    {
+      "payload": {
+        "title": "hops",
+        "price": "20",
+        "size": "X"
       },
       "id": 2
     },
     {
       "payload": {
-        "first_name": "ajwkdkjb",
-        "last_name": "k",
-        "email": "hjb"
+        "size": "X",
+        "price": "88",
+        "title": "doggo"
       },
       "id": 3
     },
     {
       "payload": {
-        "first_name": "aajajajja",
-        "last_name": "j",
-        "email": "j"
+        "title": "pies",
+        "price": "883",
+        "size": "X"
       },
       "id": 4
     },
     {
       "payload": {
-        "first_name": "awkdjbjh",
-        "last_name": "bjh",
-        "email": "bjh88888"
+        "title": "kot",
+        "price": "97",
+        "size": "L"
       },
       "id": 5
-    },
-    {
-      "payload": {
-        "first_name": "awkdjbjh",
-        "last_name": "bjh",
-        "email": "bjh888883333"
-      },
-      "id": 6
-    },
-    {
-      "payload": {
-        "first_name": "dakjwdkj",
-        "last_name": "kbjhb",
-        "email": "IGOR"
-      },
-      "id": 7
-    },
-    {
-      "payload": {
-        "first_name": "wjjwjwj",
-        "last_name": "jjjjj",
-        "email": "555555"
-      },
-      "id": 8
-    },
-    {
-      "payload": {
-        "title": "test",
-        "price": "test333"
-      },
-      "id": 9
-    },
-    {
-      "payload": {
-        "title": "awdnk",
-        "price": "jn"
-      },
-      "id": 10
-    },
-    {
-      "payload": {
-        "title": "awd",
-        "price": "ddd"
-      },
-      "id": 11
-    },
-    {
-      "payload": {
-        "title": "awddd",
-        "price": "ddd11"
-      },
-      "id": 12
-    },
-    {
-      "payload": {
-        "title": "dawdkjn",
-        "price": "knkj22"
-      },
-      "id": 13
-    },
-    {
-      "payload": {
-        "title": "awdjhk",
-        "price": "nk"
-      },
-      "id": 14
-    },
-    {
-      "payload": {
-        "title": "jakw",
-        "price": "kjk"
-      },
-      "id": 15
-    },
-    {
-      "payload": {
-        "title": "awd",
-        "price": "ff"
-      },
-      "id": 16
-    },
-    {
-      "payload": {
-        "title": "awd",
-        "price": "jjj"
-      },
-      "id": 17
-    },
-    {
-      "payload": {
-        "title": "uaua",
-        "price": "uuuu"
-      },
-      "id": 18
-    },
-    {
-      "payload": {
-        "title": "9999",
-        "price": "999999888"
-      },
-      "id": 19
-    },
-    {
-      "payload": {
-        "title": "adj",
-        "price": "kjn"
-      },
-      "id": 20
-    },
-    {
-      "payload": {
-        "title": "awdjhb",
-        "price": "jhb"
-      },
-      "id": 21
-    },
-    {
-      "payload": {
-        "title": "awdjn",
-        "price": "kjknj"
-      },
-      "id": 22
-    },
-    {
-      "payload": {
-        "title": "awdjnk",
-        "price": "jn"
-      },
-      "id": 23
-    },
-    {
-      "payload": {
-        "title": "dawd",
-        "price": "ddd"
-      },
-      "id": 24
-    },
-    {
-      "payload": {
-        "title": "awd",
-        "price": "ddd3333"
-      },
-      "id": 25
-    },
-    {
-      "payload": {
-        "title": "00000",
-        "price": "0000999"
-      },
-      "id": 26
-    },
-    {
-      "payload": {
-        "title": "88",
-        "price": "88"
-      },
-      "id": 27
-    },
-    {
-      "payload": {
-        "title": "black",
-        "price": "20"
-      },
-      "id": 28
     }
   ]
 }

@@ -4,20 +4,44 @@ import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
 import ProductsLength from './productsLength'
+import _ from "lodash";
 
 class Index extends React.Component {
-
+    constructor(props){
+        super(props);
+        this.state = {
+            filtered: "" || []
+        }
+    }
     componentDidMount(){
         this.props.onDidMount()
     }
 
+    callBackFilter = (size) => {
+        this.setState({
+            filtered: size
+        })
+    };
+
     render(){
-        const filteredItems = this.props.products.filter(item=>item.payload.title)
+        const filtered = this.state.filtered;
+        const keys = Object.keys(filtered);
+
+        const filtered222 = keys.filter(function(key) {
+            return filtered[key]
+        });
+
+        const ripley = filtered222.toString()
+        const filteredItems = this.props.products.filter(item=>!item.payload.size.indexOf(ripley));
+
         return (
             <Container style={{ padding: '1rem' }}>
                 <Row>
                     <Col sm={2}>
-                        <SizesFilter/>
+                        <SizesFilter
+                            callBackFilter={this.callBackFilter}
+                            filteredItems={filteredItems}
+                        />
                     </Col>
                     <Col sm={10}>
                         <ProductsLength>
@@ -33,7 +57,9 @@ class Index extends React.Component {
                                         <Card.Text>
                                             Some quick example text to build on the card title and make up the bulk of
                                         </Card.Text>
-                                        <Button variant="primary">{item.payload.price}</Button>
+
+                                        <Button variant="primary">{item.payload.price}</Button> &nbsp;
+                                        <Button variant="primary">{item.payload.size}</Button>
                                     </Card.Body>
                                 </Card>
                             )}

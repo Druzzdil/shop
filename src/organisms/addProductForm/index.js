@@ -16,18 +16,18 @@ class AddProductForm extends React.Component {
     }
 
     render(){
-        console.log(this.props, 'awdadad');
         return (
             <div>
                 <CssBaseline />
                 <div>
                     <Typography component="h1" variant="h5">
-                        <h2 style={{textAlign: 'center', fontSize: "27px", color: '#22607a'}}>Hyarda</h2>
+                        <h2 style={{textAlign: 'center', fontSize: "27px", color: '#22607a'}}>React</h2>
                     </Typography>
                     <Formik
                         intitialValues={{
                             title: "",
                             price: "",
+                            size: ""
                         }}
                         validate={values => {
                             let error = {}
@@ -36,6 +36,9 @@ class AddProductForm extends React.Component {
                             }
                             if (!values.price){
                                 error.price = 'required'
+                            }
+                            if (!values.size){
+                                error.size = 'required'
                             }
                             return error
                         }}
@@ -54,6 +57,10 @@ class AddProductForm extends React.Component {
                                     <InputElement>
                                         <Field  className="input-field" type="text" name="price" id="price" label="Price"/>
                                         <label htmlFor="title">Price</label>
+                                    </InputElement>
+                                    <InputElement>
+                                        <Field  className="input-field" type="text" name="size" id="size" label="Size"/>
+                                        <label htmlFor="size">Size</label>
                                     </InputElement>
                                     <ButtonWrapper>
                                         <RaisedButton type="submit">Add Product</RaisedButton>
