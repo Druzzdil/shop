@@ -4,7 +4,6 @@ import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
 import ProductsLength from './productsLength'
-import _ from "lodash";
 
 class Index extends React.Component {
     constructor(props){
@@ -23,17 +22,20 @@ class Index extends React.Component {
         })
     };
 
+    handleCheckChieldElement = (event) => {
+        let fruites = this.state.fruites
+        fruites.forEach(fruite => {
+            if (fruite.value === event.target.value)
+                fruite.isChecked =  event.target.checked
+        })
+        this.setState({fruites: fruites})
+    }
+
+
     render(){
-        const filtered = this.state.filtered;
-        const keys = Object.keys(filtered);
-
-        const filtered222 = keys.filter(function(key) {
-            return filtered[key]
-        });
-
-        const ripley = filtered222.toString()
-        const filteredItems = this.props.products.filter(item=>!item.payload.size.indexOf(ripley));
-
+        const filtered = this.state.filtered.filter(item=>item.isChecked === true);
+        const result = filtered.map(item=>item.value)
+        const filteredItems = this.props.products.filter(item=>item.payload.size.match(result));
         return (
             <Container style={{ padding: '1rem' }}>
                 <Row>

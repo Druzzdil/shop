@@ -1,19 +1,11 @@
-import React from "react";
+import React from 'react'
 
-const Checkbox = ({ label, isSelected, onCheckboxChange, id }) => (
-    <div className="form-check">
-        <label>
-            <input
-                id={id}
-                type="checkbox"
-                name={label}
-                checked={isSelected}
-                onChange={onCheckboxChange}
-                className="form-check-input"
-            />
-            {label}
-        </label>
-    </div>
-);
+export const Checkbox = props => {
+    return (
+        <li>
+            <input key={props.id} onClick={props.handleCheckChieldElement} type="checkbox" checked={props.isChecked} value={props.value} /> {props.value}
+        </li>
+    )
+}
 
-export default Checkbox;
+export default Checkbox
