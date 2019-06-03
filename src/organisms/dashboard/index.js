@@ -3,18 +3,41 @@ import { withRouter} from 'react-router-dom';
 import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
-import ProductsLength from './productsLength'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import {fetchProducts} from '../../Stores/Product/index'
 
-class Index extends React.Component {
+class Dashboard extends React.Component {
+
+    static propTypes = {
+        fetchProducts: PropTypes.func.isRequired,
+        products: PropTypes.array.isRequired,
+        filters: PropTypes.array,
+        sort: PropTypes.string
+    };
+
     constructor(props){
         super(props);
         this.state = {
             filtered: "" || []
         }
     }
-    componentDidMount(){
-        this.props.onDidMount()
+    componentDidMount() {
+        // this.handleFetchProducts();
+        // this.props.fetchProducts()
     }
+
+    componentWillReceiveProps(nextProps) {
+        const { filters: nextFilters } = nextProps;
+        if (nextFilters !== this.props.filters) {
+            this.handleFetchProducts(nextFilters, undefined);
+        }
+    }
+
+    handleFetchProducts = (filters = this.props.filters) => {
+        console.log(filters, 'tutaj');
+        this.props.fetchProducts(filters)
+    };
 
     callBackFilter = (size) => {
         this.setState({
@@ -22,20 +45,9 @@ class Index extends React.Component {
         })
     };
 
-    handleCheckChieldElement = (event) => {
-        let fruites = this.state.fruites
-        fruites.forEach(fruite => {
-            if (fruite.value === event.target.value)
-                fruite.isChecked =  event.target.checked
-        })
-        this.setState({fruites: fruites})
-    }
-
-
     render(){
-        const filtered = this.state.filtered.filter(item=>item.isChecked === true);
-        const result = filtered.map(item=>item.value)
-        const filteredItems = this.props.products.filter(item=>item.payload.size.match(result));
+        console.log(this.props, 'propsy');
+        const filteredItems = this.props.products.filter(item=>item.title);
         return (
             <Container style={{ padding: '1rem' }}>
                 <Row>
@@ -46,31 +58,31 @@ class Index extends React.Component {
                         />
                     </Col>
                     <Col sm={10}>
-                        <ProductsLength>
+                        <div>
                             {filteredItems.length === 1 ? <dvi>{filteredItems.length} <span>Product Found</span> </dvi> :
                                 <dvi>{filteredItems.length} <span>Products Found</span> </dvi>}
-                        </ProductsLength>
+                        </div>
                         <Wrapper>
                             {filteredItems.map(item =>
                                 <Card style={{ width: '15rem', margin: '10px' }}>
                                     <Card.Img variant="top" src="https://picsum.photos/640/360" />
                                     <Card.Body>
-                                        <Card.Title>{item.payload.title}</Card.Title>
+                                        <Card.Title>{item.title}</Card.Title>
                                         <Card.Text>
                                             Some quick example text to build on the card title and make up the bulk of
                                         </Card.Text>
-
-                                        <Button variant="primary">{item.payload.price}</Button> &nbsp;
-                                        <Button variant="primary">{item.payload.size}</Button>
+                                        <Button variant="primary">{item.price}</Button> &nbsp;
                                     </Card.Body>
                                 </Card>
                             )}
                         </Wrapper>
                     </Col>
                 </Row>
+                test
             </Container>
         );
     }
 }
 
-export default withRouter(Index)
+
+export default Dashboard

@@ -1,16 +1,16 @@
 import productReducer from './reducers'
+import {updateFilters} from '../../organisms/filters/actions'
 import {
-    fetchProductSuccess,
+    fetchProducts,
     FETCH_PRODUCTS,
-    fetchProduct,
     fetchProductFailed,
     addProduct,
     addProductSuccess,
     addProductFailure
 } from './actions'
 export {
-    fetchProduct,
-    fetchProductSuccess,
+    updateFilters,
+    fetchProducts,
     productReducer,
     FETCH_PRODUCTS,
     fetchProductFailed,

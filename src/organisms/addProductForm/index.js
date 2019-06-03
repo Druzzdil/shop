@@ -11,9 +11,9 @@ import {withRouter} from "react-router-dom";
 
 class AddProductForm extends React.Component {
 
-    componentDidMount(){
-        this.props.onDidMount()
-    }
+    // componentDidMount(){
+    //     this.props.onDidMount()
+    // }
 
     render(){
         return (

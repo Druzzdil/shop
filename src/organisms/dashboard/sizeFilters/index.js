@@ -2,57 +2,41 @@ import React from 'react';
 import { withRouter} from 'react-router-dom';
 import FiltersHeader from './filtersHeader'
 import Checkbox from '../../../atoms/checkbox'
-import checkboxes from './checkboxes';
-const OPTIONS = [
-    "X", "L", "XL"
-    ]
-;
+const availableSizes = ['XS', 'S', 'M', 'ML', 'L', 'XL', 'XXL'];
+
 class SizeFilters extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            fruites: [
-                {id: 1, value: "X", isChecked: false},
-                {id: 2, value: "Xl", isChecked: false},
-                {id: 3, value: "M", isChecked: false},
-                {id: 4, value: "L", isChecked: false}
-            ]
+    componentDidMount(){
+        this.selectedCheckboxes = new Set()
+    }
+
+    createCheckbox = label => (
+        <Checkbox
+            classes="filters-available-size"
+            label={label}
+            handleCheckboxChange={this.toggleCheckbox}
+            key={label}
+        />
+    );
+
+    createCheckboxes = () => availableSizes.map(this.createCheckbox);
+
+    toggleCheckbox = label => {
+        if (this.selectedCheckboxes.has(label)){
+            this.selectedCheckboxes.delete(label)
+        } else {
+            this.selectedCheckboxes.add(label);
         }
-    }
-
-    // handleCheckboxChange = changeEvent => {
-    //     const { name } = changeEvent.target;
-    //     console.log(changeEvent.target, 'target');
-    //     this.setState(prevState => ({
-    //         checkboxes: {
-    //             ...prevState.checkboxes,
-    //             [name]: !prevState.checkboxes[name],
-    //         }
-    //     }), () =>this.props.callBackFilter(this.state.checkboxes));
-    // };
-
-    handleCheckChieldElement = (event) => {
-        let fruites = this.state.fruites
-        fruites.forEach(fruite => {
-            if (fruite.value === event.target.value)
-                fruite.isChecked =  event.target.checked
-        })
-        this.setState({
-            fruites: fruites
-        }, () => this.props.callBackFilter(this.state.fruites))
-    }
+        this.props.updateFilters(Array.from(this.selectedCheckboxes))
+    };
 
     render() {
+        console.log(this.props, 'oooo    ');
         return (
             <div>
                 <FiltersHeader>
                     filters
-                    {
-                        this.state.fruites.map((fruite) => {
-                            return (<Checkbox handleCheckChieldElement={this.handleCheckChieldElement}  {...fruite} />)
-                        })
-                    }
+                    {this.createCheckboxes()}
                 </FiltersHeader>
             </div>
         );

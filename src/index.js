@@ -11,6 +11,7 @@ import {Router, Route} from 'react-router';
 import createBrowserHistory from './history'
 import AddProductPage from './Containers/AddProductPage'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import Dashboard from './organisms/dashboard/index'
 import Dashboard from './Containers/Dashboard'
 import '../node_modules/bootstrap/dist/css/bootstrap.css'
 
