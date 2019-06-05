@@ -31,7 +31,7 @@ class SizeFilters extends React.Component {
     };
 
     render() {
-        console.log(this.props, 'oooo    ');
+        console.log(this.props, 'updateFilters    ');
         return (
             <div>
                 <FiltersHeader>

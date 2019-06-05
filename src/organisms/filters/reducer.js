@@ -7,7 +7,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_FILTER:
-            console.log(action, 'filters reducer');
+            console.log(action, 'UPDATE_FILTER');
             return {
                 ...state,
                 items: action.payload

@@ -4,8 +4,6 @@ import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux'
-import {fetchProducts} from '../../Stores/Product/index'
 
 class Dashboard extends React.Component {
 
@@ -16,6 +14,10 @@ class Dashboard extends React.Component {
         sort: PropTypes.string
     };
 
+    state = {
+        isLoading: false
+    };
+
     constructor(props){
         super(props);
         this.state = {
@@ -24,7 +26,7 @@ class Dashboard extends React.Component {
     }
     componentDidMount() {
         // this.handleFetchProducts();
-        // this.props.fetchProducts()
+        this.props.fetchProducts()
     }
 
     componentWillReceiveProps(nextProps) {
@@ -34,8 +36,8 @@ class Dashboard extends React.Component {
         }
     }
 
-    handleFetchProducts = (filters = this.props.filters) => {
-        console.log(filters, 'tutaj');
+    handleFetchProducts = () => {
+        const {filters} = this.props;
         this.props.fetchProducts(filters)
     };
 
@@ -46,13 +48,14 @@ class Dashboard extends React.Component {
     };
 
     render(){
-        console.log(this.props, 'propsy');
+        console.log(this.props, 'chono');
         const filteredItems = this.props.products.filter(item=>item.title);
         return (
             <Container style={{ padding: '1rem' }}>
                 <Row>
                     <Col sm={2}>
                         <SizesFilter
+                            updateFilters={this.props.updateFilters}
                             callBackFilter={this.callBackFilter}
                             filteredItems={filteredItems}
                         />

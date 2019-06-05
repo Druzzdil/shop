@@ -18,7 +18,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 products: action.payload,
-                loading:false
+                filters: action.payload,
+                loading: false
             };
         case ADD_PRODUCT:
             return {
