@@ -1,28 +1,12 @@
-import { put, takeLatest, call } from 'redux-saga/effects';
+import { put, takeLatest, call, takeEvery} from 'redux-saga/effects';
 import {addProductSuccess} from './index'
 import axios from 'axios';
 import {ADD_PRODUCT, FETCH_PRODUCTS, fetchProductSuccess} from "./actions";
 
-// export const fetchProducts = (filters) => dispatch => {
-//     axios.get('http://localhost:4002/products').then(response => {
-//         let { products } = response.data;
-//         console.log(response, 'response');
-//         console.log(response);
-//         if (!!filters && filters.length > 0) {
-//             products = products.filter(p =>
-//                 filters.find(f => p.availableSizes.find(size => size === f))
-//             );
-//         }
-//         return dispatch({
-//             type: FETCH_PRODUCTS_SUCCESS,
-//             payload: products
-//         });
-//     })
-// }
-
 export const fetchProducts = () => {
     return new Promise(resolve => {
         return axios.get('http://localhost:4002/products').then(response => {
+            console.log(response, 'response');
             resolve(response)
         })
     })
@@ -34,10 +18,10 @@ function* productsWorker(action) {
         let { payload } = action;
 
         if (!!payload && payload.length > 0) {
-           const test = response.data.filter(p => payload.find(f => p.availableSizes.find(size => size === f)));
-            yield put(fetchProductSuccess(test));
+            const filteredItems = response.data.filter(p => payload.find(f => p.availableSizes.find(size => size === f)));
+            yield put(fetchProductSuccess(filteredItems));
          }
-        } catch(error) {
+         } catch(error) {
             console.log(error, 'error');
         }
 }
@@ -55,6 +39,7 @@ function addProduct(payload) {
 }
 
 function* productWorker(action) {
+    console.log(action, 'saga2222');
     try {
         const response = yield call(addProduct, action.payload);
         yield put(addProductSuccess(response.data));
@@ -66,6 +51,6 @@ function* productWorker(action) {
 }
 
 export function* fetchProductsWatcher() {
-    yield takeLatest(FETCH_PRODUCTS, productsWorker);
-    yield takeLatest(ADD_PRODUCT, productWorker);
+    yield takeEvery(FETCH_PRODUCTS, productsWorker);
+    yield takeEvery(ADD_PRODUCT, productWorker);
 }

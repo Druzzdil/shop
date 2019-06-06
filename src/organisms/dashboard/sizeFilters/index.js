@@ -22,16 +22,16 @@ class SizeFilters extends React.Component {
     createCheckboxes = () => availableSizes.map(this.createCheckbox);
 
     toggleCheckbox = label => {
-        if (this.selectedCheckboxes.has(label)){
-            this.selectedCheckboxes.delete(label)
+        if (this.selectedCheckboxes.delete(label)){
+            this.selectedCheckboxes.has(label)
         } else {
             this.selectedCheckboxes.add(label);
         }
+        console.log(Array.from(this.selectedCheckboxes));
         this.props.updateFilters(Array.from(this.selectedCheckboxes))
     };
 
     render() {
-        console.log(this.props, 'updateFilters    ');
         return (
             <div>
                 <FiltersHeader>

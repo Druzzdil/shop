@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter} from 'react-router-dom';
 import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
@@ -24,8 +23,8 @@ class Dashboard extends React.Component {
             filtered: "" || []
         }
     }
-    componentDidMount() {
-        // this.handleFetchProducts();
+
+    componentDidMount(){
         this.props.fetchProducts()
     }
 
@@ -33,11 +32,12 @@ class Dashboard extends React.Component {
         const { filters: nextFilters } = nextProps;
         if (nextFilters !== this.props.filters) {
             this.handleFetchProducts(nextFilters, undefined);
+        } else {
+            this.props.fetchProducts()
         }
     }
 
-    handleFetchProducts = () => {
-        const {filters} = this.props;
+    handleFetchProducts = (filters) => {
         this.props.fetchProducts(filters)
     };
 
@@ -47,9 +47,13 @@ class Dashboard extends React.Component {
         })
     };
 
+    addProductToCheckout = (item) => {
+      this.props.proceedCheckoutSuccess(item)
+    };
+
     render(){
-        console.log(this.props, 'chono');
-        const filteredItems = this.props.products.filter(item=>item.title);
+        console.log(this.props, 'awdkjawnd');
+        const filteredItems = this.props.products && this.props.products.filter(item=>item.title)
         return (
             <Container style={{ padding: '1rem' }}>
                 <Row>
@@ -75,13 +79,14 @@ class Dashboard extends React.Component {
                                             Some quick example text to build on the card title and make up the bulk of
                                         </Card.Text>
                                         <Button variant="primary">{item.price}</Button> &nbsp;
+                                        <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
+                                        <Button onClick={()=>this.addProductToCheckout(item.id)}>Add Product</Button>
                                     </Card.Body>
                                 </Card>
                             )}
                         </Wrapper>
                     </Col>
                 </Row>
-                test
             </Container>
         );
     }

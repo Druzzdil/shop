@@ -6,12 +6,6 @@ const mapStateToProps = state => ({
     products: state.productReducer.products,
 });
 
-const mapDispatchToProps = dispatch => ({
-    // onDidMount: (payload) => dispatch(fetchProducts(payload)),
-    // addProduct: (payload) => dispatch(addProduct(payload)),
-    // fetchProducts: (payload) => dispatch(fetchProducts(payload))
-});
-
 export default connect(
     mapStateToProps,
     {fetchProducts}

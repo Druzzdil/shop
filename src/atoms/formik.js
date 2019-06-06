@@ -11,7 +11,6 @@ export const MyForm = props => {
     } = props;
     return (
         <form onSubmit={values=> {
-            console.log(values, 'values');
             this.props.addProduct(values);
         }}>
             <input

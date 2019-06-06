@@ -1,6 +1,7 @@
 import productReducer from './reducers'
 import {updateFilters} from '../../organisms/filters/actions'
 import {
+    proceedCheckoutSuccess,
     fetchProducts,
     FETCH_PRODUCTS,
     fetchProductFailed,
@@ -9,6 +10,7 @@ import {
     addProductFailure
 } from './actions'
 export {
+    proceedCheckoutSuccess,
     updateFilters,
     fetchProducts,
     productReducer,

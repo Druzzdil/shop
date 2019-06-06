@@ -7,6 +7,10 @@ export const ADD_PRODUCT_FAILURE = 'ADD_PRODUCT_FAILURE';
 export const FETCH_PRODUCTS = 'FETCH_PRODUCTS';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 
+export const CHECKOUT_PRODUCT = 'CHECKOUT_PRODUCT'
+export const CHECKOUT_PRODUCT_SUCCESS = 'CHECKOUT_PRODUCT_SUCCESS'
+export const CHECKOUT_PRODUCT_FAILURE = 'CHECKOUT_PRODUCT_FAILURE'
+
 export const fetchProducts = (filters, payload) => ({
     type: FETCH_PRODUCTS,
     filters,
@@ -17,28 +21,6 @@ export const fetchProductSuccess = payload => ({
     type: FETCH_PRODUCTS_SUCCESS,
     payload
 });
-
-// export const fetchProducts = (filters) => dispatch => {
-//         // return axios.get('http://localhost:4002/products').then(response => {
-//         //     return dispatch({
-//         //         type: FETCH_PRODUCTS_SUCCESS,
-//         //         payload: response.data
-//         //     });
-//         // })
-//         return axios.get('http://localhost:4002/products').then(response => {
-//             let { data } = response;
-//             // if (!!filters && filters.length > 0) {
-//             //     data = data.filter(p =>
-//             //         filters.find(f => p.availableSizes.find(size => size === f))
-//             //     );
-//             // }
-//
-//             return dispatch({
-//                 type: FETCH_PRODUCTS,
-//                 payload: data
-//             });
-//     })
-// }
 
 export const updateFilters = filters => ({
     type: UPDATE_FILTER,
@@ -65,3 +47,20 @@ export const addProductFailure = error => ({
     type: ADD_PRODUCT_FAILURE,
     error
 })
+
+
+//checkout
+
+export const proceedCheckout = () => ({
+    type: CHECKOUT_PRODUCT
+})
+
+export const proceedCheckoutSuccess = (payload) => ({
+    type: CHECKOUT_PRODUCT_SUCCESS,
+    payload
+});
+
+export const proceedCheckoutFailure = error => ({
+    type: CHECKOUT_PRODUCT_FAILURE,
+    error
+});
