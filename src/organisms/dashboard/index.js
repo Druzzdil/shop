@@ -3,6 +3,7 @@ import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
 import PropTypes from 'prop-types';
+import MenuProvider from "../../MenuProvider";
 
 class Dashboard extends React.Component {
 
@@ -22,10 +23,6 @@ class Dashboard extends React.Component {
         this.state = {
             filtered: "" || []
         }
-    }
-
-    componentDidMount(){
-        this.props.fetchProducts()
     }
 
     componentWillReceiveProps(nextProps) {
@@ -93,4 +90,4 @@ class Dashboard extends React.Component {
 }
 
 
-export default Dashboard
+export default MenuProvider(Dashboard)
