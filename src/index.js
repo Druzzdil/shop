@@ -7,7 +7,7 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './rootReducer'
 import rootSaga from './rootSaga'
 import createSagaMiddleware from 'redux-saga'
-import {Router, Route} from 'react-router';
+import {Router, Route, Switch} from 'react-router';
 import createBrowserHistory from './history'
 import AddProductPage from './Containers/AddProductPage'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -24,10 +24,12 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <Router history={createBrowserHistory}>
         <MuiThemeProvider>
-            <Provider store={store}>
-                <Route exact path="/" component={AddProductPage}/>
-                <Route path="/dashboard" component={Dashboard}/>
-            </Provider>
+            <Switch>
+                <Provider store={store}>
+                    <Route path="/create" component={AddProductPage}/>
+                    <Route exact path="/" component={Dashboard}/>
+                </Provider>
+            </Switch>
         </MuiThemeProvider>
     </Router>
     ,document.getElementById('root')
