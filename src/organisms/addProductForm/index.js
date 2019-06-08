@@ -11,10 +11,6 @@ import {withRouter} from "react-router-dom";
 
 class AddProductForm extends React.Component {
 
-    // componentDidMount(){
-    //     this.props.onDidMount()
-    // }
-
     render(){
         return (
             <div>
@@ -27,7 +23,8 @@ class AddProductForm extends React.Component {
                         intitialValues={{
                             title: "",
                             price: "",
-                            size: ""
+                            size: "",
+                            availableSizes: ""
                         }}
                         validate={values => {
                             let error = {}
@@ -37,14 +34,22 @@ class AddProductForm extends React.Component {
                             if (!values.price){
                                 error.price = 'required'
                             }
-                            if (!values.size){
-                                error.size = 'required'
+                            if (!values.availableSizes){
+                                error.availableSizes = 'required'
+                            }
+                            if (!values.availableSizes){
+                                error.availableSizes = 'required'
                             }
                             return error
                         }}
                         onSubmit={values=> {
-                            this.props.addProduct(values);
-                            this.props.history.push("/dashboard");
+                            this.props.addProduct({
+                                id: values.id,
+                                title: values.title,
+                                price: values.price,
+                                availableSizes: [values.availableSizes]
+                            });
+                            this.props.history.push("/");
                         }}
                     >
                         {() => (
@@ -59,8 +64,12 @@ class AddProductForm extends React.Component {
                                         <label htmlFor="title">Price</label>
                                     </InputElement>
                                     <InputElement>
-                                        <Field  className="input-field" type="text" name="size" id="size" label="Size"/>
-                                        <label htmlFor="size">Size</label>
+                                        <Field  className="input-field" type="text" name="availableSizes" id="availableSizes" label="availableSizes"/>
+                                        <label htmlFor="availableSizes">availableSizes</label>
+                                    </InputElement>
+                                    <InputElement>
+                                        <Field  className="input-field" type="text" name="description" id="description" label="description"/>
+                                        <label htmlFor="description">description</label>
                                     </InputElement>
                                     <ButtonWrapper>
                                         <RaisedButton type="submit">Add Product</RaisedButton>

@@ -7,8 +7,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-    // onDidMount: (payload) => dispatch(fetchProducts(payload)),
-    // addProduct: (payload) => dispatch(addProduct(payload))
+    addProduct: (payload) => dispatch(addProduct(payload)),
+    fetchProducts: (filters, payload) => dispatch(fetchProducts(payload, filters)),
 });
 
 export default connect(

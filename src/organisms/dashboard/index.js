@@ -31,6 +31,7 @@ class Dashboard extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps, 'next');
         const { filters: nextFilters } = nextProps;
         if (nextFilters !== this.props.filters) {
             this.handleFetchProducts(nextFilters, undefined);
@@ -51,6 +52,18 @@ class Dashboard extends React.Component {
       this.props.proceedCheckoutSuccess(item)
     };
 
+
+    showProductsNumber = () => {
+        const filteredItems = this.props.products && this.props.products.filter(item=>item.title);
+        if (filteredItems.length === 1 ){
+           return  <dvi>{filteredItems.length} <span>Product Found</span> </dvi>
+        } else if(filteredItems.length > 1) {
+            return <dvi>{filteredItems.length} <span>Products Found</span> </dvi>
+        } else if(filteredItems.length === 0){
+            return <div>no products found</div>
+        }
+    };
+
     render(){
         const filteredItems = this.props.products && this.props.products.filter(item=>item.title)
         return (
@@ -65,8 +78,7 @@ class Dashboard extends React.Component {
                     </Col>
                     <Col sm={10}>
                         <div>
-                            {filteredItems.length === 1 ? <dvi>{filteredItems.length} <span>Product Found</span> </dvi> :
-                                <dvi>{filteredItems.length} <span>Products Found</span> </dvi>}
+                            {this.showProductsNumber()}
                         </div>
                         <Wrapper>
                             {filteredItems.map(item =>

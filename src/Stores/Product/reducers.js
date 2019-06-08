@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
         case ADD_PRODUCT_SUCCESS:
             return {
                 ...state,
-                products: [action.payload],
+                products: [action.payload.payload],
                 loading: false
             }
         case ADD_PRODUCT_FAILURE:
