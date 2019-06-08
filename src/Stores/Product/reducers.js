@@ -21,8 +21,7 @@ export default (state = initialState, action) => {
              loading:true
             };
         case FETCH_PRODUCTS_SUCCESS:
-            console.log(action.payload, 'payloadek');
-            // tutaj trafiaja juz z opoznieniem
+            console.log(action.payload, 'reducer');
             return {
                 ...state,
                 products: action.payload,

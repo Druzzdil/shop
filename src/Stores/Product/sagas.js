@@ -5,7 +5,7 @@ import {ADD_PRODUCT, FETCH_PRODUCTS, fetchProductSuccess} from "./actions";
 
 export const fetchProducts = () => {
     return new Promise(resolve => {
-        return axios.get('http://localhost:4002/products').then(response => {
+        return axios.get('http://localhost:4000/products').then(response => {
             console.log(response, 'response');
             resolve(response)
         })
@@ -20,7 +20,10 @@ function* productsWorker(action) {
         if (!!payload && payload.length > 0) {
             const filteredItems = response.data.filter(p => payload.find(f => p.availableSizes.find(size => size === f)));
             yield put(fetchProductSuccess(filteredItems));
-         }
+         } else {
+            yield put(fetchProductSuccess(response.data));
+        }
+
          } catch(error) {
             console.log(error, 'error');
         }
@@ -28,7 +31,7 @@ function* productsWorker(action) {
 
 function addProduct(payload) {
     return new Promise((resolve, reject) => {
-        axios.post('http://localhost:4002/products', {payload})
+        axios.post('http://localhost:4000/products', {payload})
             .then(response => {
                 resolve(response);
             })

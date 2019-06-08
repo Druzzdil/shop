@@ -4,6 +4,7 @@ import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
 import PropTypes from 'prop-types';
 import MenuProvider from "../../MenuProvider";
+import PersistentDrawerLeft from '../sidebar/index'
 
 class Dashboard extends React.Component {
 
@@ -25,12 +26,14 @@ class Dashboard extends React.Component {
         }
     }
 
+    componentDidMount(){
+        this.props.fetchProducts()
+    }
+
     componentWillReceiveProps(nextProps) {
         const { filters: nextFilters } = nextProps;
         if (nextFilters !== this.props.filters) {
             this.handleFetchProducts(nextFilters, undefined);
-        } else {
-            this.props.fetchProducts()
         }
     }
 
@@ -49,10 +52,9 @@ class Dashboard extends React.Component {
     };
 
     render(){
-        console.log(this.props, 'awdkjawnd');
         const filteredItems = this.props.products && this.props.products.filter(item=>item.title)
         return (
-            <Container style={{ padding: '1rem' }}>
+            <Container style={{ padding: '1rem', marginTop: '7%' }}>
                 <Row>
                     <Col sm={2}>
                         <SizesFilter
@@ -84,6 +86,7 @@ class Dashboard extends React.Component {
                         </Wrapper>
                     </Col>
                 </Row>
+                <PersistentDrawerLeft/>
             </Container>
         );
     }
