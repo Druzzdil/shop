@@ -4,8 +4,6 @@
     <list default="true" id="9fcff306-2f02-4b6c-89a3-fa65d65f21f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Containers/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Containers/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Stores/Product/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Stores/Product/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/organisms/dashboard/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/organisms/dashboard/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -51,7 +49,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="gitignore" value="2" />
-          <entry key="js" value="18993" />
+          <entry key="js" value="19008" />
           <entry key="json" value="30" />
           <entry key="scss" value="54" />
           <entry key="txt" value="23" />
@@ -60,7 +58,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="30" />
-          <entry key="JavaScript" value="18993" />
+          <entry key="JavaScript" value="19008" />
           <entry key="PLAIN_TEXT" value="25" />
           <entry key="SCSS" value="54" />
         </counts>
@@ -117,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/organisms/dashboard/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="67">
-              <caret line="67" column="133" selection-start-line="67" selection-start-column="133" selection-end-line="67" selection-end-column="133" />
+            <state relative-caret-position="116">
+              <caret line="85" column="99" selection-start-line="85" selection-start-column="99" selection-end-line="85" selection-end-column="99" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -138,7 +136,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
+            <state relative-caret-position="-264">
               <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
             </state>
           </provider>
@@ -455,7 +453,7 @@
       <workItem from="1559999357539" duration="5766000" />
       <workItem from="1560030891964" duration="1833000" />
       <workItem from="1560074891146" duration="489000" />
-      <workItem from="1560081384783" duration="4539000" />
+      <workItem from="1560081384783" duration="4973000" />
     </task>
     <task id="LOCAL-00001" summary="add formik + redux">
       <created>1558905915932</created>
@@ -468,13 +466,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131340000" />
+    <option name="totallyTimeSpent" value="131774000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="811" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17124736" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17124736" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -486,7 +484,7 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33570412" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.33570412" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="11" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -736,15 +734,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
+        <state relative-caret-position="-264">
           <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/organisms/dashboard/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="67">
-          <caret line="67" column="133" selection-start-line="67" selection-start-column="133" selection-end-line="67" selection-end-column="133" />
+        <state relative-caret-position="116">
+          <caret line="85" column="99" selection-start-line="85" selection-start-column="99" selection-end-line="85" selection-end-column="99" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

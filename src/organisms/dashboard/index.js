@@ -27,31 +27,16 @@ class Dashboard extends React.Component {
         this.props.fetchProducts()
     }
 
-    // static getDerivedStateFromProps(nextProps, prevState) {
-    //     console.log(prevState, 'prev');
-    //     const { filters: nextFilters } = nextProps;
-    //     if (nextFilters !== this.props.filters && !this.props.loading) {
-    //         this.props.fetchProducts(nextFilters)
-    //     }
-    //     if (nextProps.products && !this.props.loading){
-    //         this.setState({
-    //             productsState: nextProps.products
-    //         });
-    //     }
-    // }
-
-
     componentWillReceiveProps(nextProps, nextState){
-        console.log(nextProps, 'nextProps');
         const { filters: nextFilters } = nextProps;
-        if (nextProps.products !== this.props.products && this.props.loading === false) {
-            this.props.fetchProducts(nextFilters)
+        if (nextProps.filters !== this.props.filters) {
+            this.handleFetchProducts(nextFilters, undefined);
         }
     }
 
-    // handleFetchProducts = (filters) => {
-    //     this.props.fetchProducts(filters)
-    // };
+    handleFetchProducts = (filters) => {
+        this.props.fetchProducts(filters)
+    };
 
     callBackFilter = (size) => {
         this.setState({
@@ -98,7 +83,7 @@ class Dashboard extends React.Component {
                                     <Card.Body>
                                         <Card.Title>{item.title}</Card.Title>
                                         <Card.Text>
-                                            Some quick example text to build on the card title and make up the bulk of
+                                            Some quick example text to build on the card title and
                                         </Card.Text>
                                         <Button variant="primary">{item.price}</Button> &nbsp;
                                         <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
