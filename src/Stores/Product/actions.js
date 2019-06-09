@@ -13,7 +13,8 @@ export const CHECKOUT_PRODUCT_FAILURE = 'CHECKOUT_PRODUCT_FAILURE'
 
 export const fetchProducts = (filters, payload) => ({
     type: FETCH_PRODUCTS,
-    payload
+    payload,
+    filters
 });
 
 export const fetchProductSuccess = payload => ({

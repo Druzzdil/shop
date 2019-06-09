@@ -21,18 +21,20 @@ export default (state = initialState, action) => {
              loading:true
             };
         case FETCH_PRODUCTS_SUCCESS:
-            console.log(action.payload, 'reducer');
+            console.log(action.payload, 'reducer0');
             return {
                 ...state,
                 products: action.payload,
                 loading: false
             };
         case ADD_PRODUCT:
+            console.log(action.payload, 'reducer1');
             return {
                 ...state,
                 loading: true
             };
         case ADD_PRODUCT_SUCCESS:
+            console.log(action.payload, 'reducer2');
             return {
                 ...state,
                 products: [action.payload.payload],

@@ -97,12 +97,44 @@
       "id": 41
     },
     {
-      "title": "wkwk",
-      "price": "655",
+      "title": "efk",
+      "price": "57",
       "availableSizes": [
-        "X"
+        "L"
       ],
       "id": 42
+    },
+    {
+      "title": "aii",
+      "price": "88",
+      "availableSizes": [
+        "L"
+      ],
+      "id": 43
+    },
+    {
+      "title": "uu",
+      "price": "7",
+      "availableSizes": [
+        "L"
+      ],
+      "id": 44
+    },
+    {
+      "title": "od878",
+      "price": "856",
+      "availableSizes": [
+        "L, X,M,XX"
+      ],
+      "id": 45
+    },
+    {
+      "title": "osos",
+      "price": "75",
+      "availableSizes": [
+        "K"
+      ],
+      "id": 46
     }
   ]
 }

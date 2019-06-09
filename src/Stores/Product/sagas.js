@@ -6,7 +6,7 @@ import {ADD_PRODUCT, FETCH_PRODUCTS, fetchProductSuccess, fetchProducts} from ".
 export const fetchProductsRequest = () => {
     return new Promise(resolve => {
         return axios.get('http://localhost:4002/products').then(response => {
-            console.log(response, 'response');
+            console.log(response, 'response111');
             resolve(response)
         })
     })
@@ -45,7 +45,7 @@ function* productWorker(action) {
     try {
         const response = yield call(addProduct, action.payload);
         yield put(addProductSuccess(response.data));
-        yield put(fetchProductSuccess(response.data));
+        yield put(fetchProducts())
     } catch {
         console.log('error');
     }

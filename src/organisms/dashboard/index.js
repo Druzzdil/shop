@@ -15,14 +15,11 @@ class Dashboard extends React.Component {
         sort: PropTypes.string
     };
 
-    state = {
-        isLoading: false
-    };
-
     constructor(props){
         super(props);
         this.state = {
-            filtered: "" || []
+            filtered: "" || [],
+            productsState: []
         }
     }
 
@@ -31,10 +28,14 @@ class Dashboard extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        console.log(nextProps, 'next');
         const { filters: nextFilters } = nextProps;
         if (nextFilters !== this.props.filters) {
             this.handleFetchProducts(nextFilters, undefined);
+        }
+        if (nextProps.products){
+            this.setState({
+                productsState: nextProps.products
+            })
         }
     }
 
@@ -54,7 +55,7 @@ class Dashboard extends React.Component {
 
 
     showProductsNumber = () => {
-        const filteredItems = this.props.products && this.props.products.filter(item=>item.title);
+        const filteredItems = this.props.products && this.props.products ? this.props.products.filter(item=>item.title) : [];
         if (filteredItems.length === 1 ){
            return  <dvi>{filteredItems.length} <span>Product Found</span> </dvi>
         } else if(filteredItems.length > 1) {
@@ -65,7 +66,9 @@ class Dashboard extends React.Component {
     };
 
     render(){
-        const filteredItems = this.props.products && this.props.products.filter(item=>item.title)
+        console.log(this.state, 'state');
+        const filteredItems = this.props.products && this.props.products && this.props.products ?
+            this.props.products.filter(item=>item.title) : "";
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>
                 <Row>
