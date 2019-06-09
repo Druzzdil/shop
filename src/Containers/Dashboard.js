@@ -7,6 +7,7 @@ import {updateFilters} from '../organisms/filters/actions'
 const mapStateToProps = state => ({
     products: state.productReducer.products,
     productList: state.productReducer.productList,
+    loading: state.productReducer.loading,
     filters: state.filters.items
 });
 

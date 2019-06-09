@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             filtered: "" || [],
-            productsState: []
+            productsState: [] || ""
         }
     }
 
@@ -27,21 +27,31 @@ class Dashboard extends React.Component {
         this.props.fetchProducts()
     }
 
-    componentWillReceiveProps(nextProps) {
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     console.log(prevState, 'prev');
+    //     const { filters: nextFilters } = nextProps;
+    //     if (nextFilters !== this.props.filters && !this.props.loading) {
+    //         this.props.fetchProducts(nextFilters)
+    //     }
+    //     if (nextProps.products && !this.props.loading){
+    //         this.setState({
+    //             productsState: nextProps.products
+    //         });
+    //     }
+    // }
+
+
+    componentWillReceiveProps(nextProps, nextState){
+        console.log(nextProps, 'nextProps');
         const { filters: nextFilters } = nextProps;
-        if (nextFilters !== this.props.filters) {
-            this.handleFetchProducts(nextFilters, undefined);
-        }
-        if (nextProps.products){
-            this.setState({
-                productsState: nextProps.products
-            })
+        if (nextProps.products !== this.props.products && this.props.loading === false) {
+            this.props.fetchProducts(nextFilters)
         }
     }
 
-    handleFetchProducts = (filters) => {
-        this.props.fetchProducts(filters)
-    };
+    // handleFetchProducts = (filters) => {
+    //     this.props.fetchProducts(filters)
+    // };
 
     callBackFilter = (size) => {
         this.setState({
@@ -55,7 +65,7 @@ class Dashboard extends React.Component {
 
 
     showProductsNumber = () => {
-        const filteredItems = this.props.products && this.props.products ? this.props.products.filter(item=>item.title) : [];
+        const filteredItems = this.props.products && this.props.products && this.props.products.filter(item=>item ? item.title : "");
         if (filteredItems.length === 1 ){
            return  <dvi>{filteredItems.length} <span>Product Found</span> </dvi>
         } else if(filteredItems.length > 1) {
@@ -66,9 +76,7 @@ class Dashboard extends React.Component {
     };
 
     render(){
-        console.log(this.state, 'state');
-        const filteredItems = this.props.products && this.props.products && this.props.products ?
-            this.props.products.filter(item=>item.title) : "";
+        const filteredItems = this.props.products.filter(item=>item ? item.title : "")
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>
                 <Row>
@@ -94,7 +102,7 @@ class Dashboard extends React.Component {
                                         </Card.Text>
                                         <Button variant="primary">{item.price}</Button> &nbsp;
                                         <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
-                                        <Button onClick={()=>this.addProductToCheckout(item.id)}>Add Product</Button>
+                                        {/*<Button onClick={()=>this.addProductToCheckout(item.id)}>Add Product</Button>*/}
                                     </Card.Body>
                                 </Card>
                             )}
@@ -108,4 +116,4 @@ class Dashboard extends React.Component {
 }
 
 
-export default MenuProvider(Dashboard)
+export default Dashboard

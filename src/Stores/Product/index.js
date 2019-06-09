@@ -7,7 +7,7 @@ import {
     fetchProductFailed,
     addProduct,
     addProductSuccess,
-    addProductFailure
+    addProductFailure,
 } from './actions'
 export {
     proceedCheckoutSuccess,
