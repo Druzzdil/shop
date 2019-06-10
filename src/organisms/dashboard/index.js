@@ -3,8 +3,7 @@ import Wrapper from './wrapper'
 import {Container, Row, Col, Card, Button} from 'react-bootstrap'
 import SizesFilter from '../../Containers/SizeFilters'
 import PropTypes from 'prop-types';
-import MenuProvider from "../../MenuProvider";
-import PersistentDrawerLeft from '../sidebar/index'
+import PersistentDrawerLeft from '../../Containers/Sidebar'
 
 class Dashboard extends React.Component {
 
@@ -28,6 +27,7 @@ class Dashboard extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextState){
+        console.log(nextProps, 'nextProps');
         const { filters: nextFilters } = nextProps;
         if (nextProps.filters !== this.props.filters) {
             this.handleFetchProducts(nextFilters, undefined);
@@ -46,6 +46,7 @@ class Dashboard extends React.Component {
 
     addProductToCheckout = (item) => {
       this.props.proceedCheckoutSuccess(item)
+        //rename this to proceedCheckout
     };
 
 
@@ -60,8 +61,12 @@ class Dashboard extends React.Component {
         }
     };
 
-    render(){
-        const filteredItems = this.props.products.filter(item=>item ? item.title : "")
+    render() {
+        let productList = this.props.productList
+        const result = this.props.products.filter( addedItem => productList.find( cartItem => cartItem === addedItem.id ));
+        // hehehe
+        console.log(result, 'result');
+        const filteredItems = this.props.products.filter(item=>item ? item.title : "");
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>
                 <Row>
@@ -87,14 +92,16 @@ class Dashboard extends React.Component {
                                         </Card.Text>
                                         <Button variant="primary">{item.price}</Button> &nbsp;
                                         <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
-                                        {/*<Button onClick={()=>this.addProductToCheckout(item.id)}>Add Product</Button>*/}
+                                        <Button onClick={()=>this.addProductToCheckout(item.id)}>Add Product</Button>
                                     </Card.Body>
                                 </Card>
                             )}
                         </Wrapper>
                     </Col>
                 </Row>
-                <PersistentDrawerLeft/>
+                <PersistentDrawerLeft
+                    filters={this.props.filters}
+                />
             </Container>
         );
     }

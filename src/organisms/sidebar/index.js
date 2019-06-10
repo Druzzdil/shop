@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -18,8 +18,9 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-router-dom'
+import {ProductList} from '../productList'
 
-const drawerWidth = 240;
+const drawerWidth = 440;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -77,7 +78,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function PersistentDrawerLeft() {
+function PersistentDrawerLeft({checkoutItems}) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -85,6 +86,14 @@ function PersistentDrawerLeft() {
     function handleDrawerOpen() {
         setOpen(true);
     }
+
+    useEffect(() => {
+        if (checkoutItems.length >= 1){
+            setOpen(true)
+        }
+    }, [checkoutItems]);
+
+    console.log(checkoutItems, '00000   ');
 
     function handleDrawerClose() {
         setOpen(false);
@@ -119,6 +128,7 @@ function PersistentDrawerLeft() {
                 variant="persistent"
                 anchor="left"
                 open={open}
+                onRequestClose={checkoutItems.length ===1 && open}
                 classes={{
                     paper: classes.drawerPaper,
                 }}
@@ -146,6 +156,9 @@ function PersistentDrawerLeft() {
                         </ListItem>
                     ))}
                 </List>
+                <div>
+                    <ProductList checkoutItems={checkoutItems} />
+                </div>
             </Drawer>
             <main
                 className={clsx(classes.content, {
