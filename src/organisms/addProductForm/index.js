@@ -46,7 +46,7 @@ class AddProductForm extends React.Component {
                             this.props.addProduct({
                                 id: values.id,
                                 title: values.title,
-                                price: values.price,
+                                price: Number(values.price),
                                 availableSizes: [values.availableSizes]
                             });
                             this.props.history.push("/");

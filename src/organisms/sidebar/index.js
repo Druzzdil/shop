@@ -78,7 +78,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function PersistentDrawerLeft({checkoutItems}) {
+function PersistentDrawerLeft({checkoutItems, sum}) {
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
@@ -94,6 +94,7 @@ function PersistentDrawerLeft({checkoutItems}) {
     }, [checkoutItems]);
 
     console.log(checkoutItems, '00000   ');
+    console.log(sum, 'sum');
 
     function handleDrawerClose() {
         setOpen(false);
@@ -158,6 +159,7 @@ function PersistentDrawerLeft({checkoutItems}) {
                 </List>
                 <div>
                     <ProductList checkoutItems={checkoutItems} />
+                    <div>{sum}</div>
                 </div>
             </Drawer>
             <main

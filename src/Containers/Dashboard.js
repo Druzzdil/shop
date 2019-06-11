@@ -3,9 +3,10 @@ import { connect } from 'react-redux'
 import {fetchProducts} from '../Stores/Product/index'
 import {proceedCheckoutSuccess} from '../Stores/Product/index'
 import {updateFilters} from '../organisms/filters/actions'
+import {getProductsSelector} from '../Stores/Selectors/productSelectors'
 
 const mapStateToProps = state => ({
-    products: state.productReducer.products,
+    products: getProductsSelector(state),
     productList: state.productReducer.productList,
     loading: state.productReducer.loading,
     filters: state.filters.items

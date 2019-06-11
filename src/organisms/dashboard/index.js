@@ -46,7 +46,6 @@ class Dashboard extends React.Component {
 
     addProductToCheckout = (item) => {
       this.props.proceedCheckoutSuccess(item)
-        //rename this to proceedCheckout
     };
 
 
@@ -62,10 +61,6 @@ class Dashboard extends React.Component {
     };
 
     render() {
-        let productList = this.props.productList
-        const result = this.props.products.filter( addedItem => productList.find( cartItem => cartItem === addedItem.id ));
-        // hehehe
-        console.log(result, 'result');
         const filteredItems = this.props.products.filter(item=>item ? item.title : "");
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>

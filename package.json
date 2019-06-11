@@ -66,6 +66,7 @@
     "reactstrap": "^8.0.0",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
+    "reselect": "^4.0.0",
     "resolve": "1.10.0",
     "sass-loader": "7.1.0",
     "semver": "6.0.0",
@@ -150,5 +151,8 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.8"
   }
 }

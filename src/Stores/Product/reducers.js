@@ -13,6 +13,7 @@ const initialState = {
     productList: [],
 };
 
+// check how this reducer can be changed
 export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_PRODUCTS:
@@ -68,3 +69,4 @@ export default (state = initialState, action) => {
         }
     }
 }
+

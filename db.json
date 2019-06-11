@@ -1,100 +1,20 @@
 {
   "products": [
     {
-      "title": "APM-1227-supplylist---pagination",
-      "price": "ddd",
-      "availableSizes": [
-        "L,    X, XL"
-      ],
-      "id": 30
-    },
-    {
-      "title": "Create Inset Component",
-      "price": "897",
+      "title": "3",
+      "price": 87,
       "availableSizes": [
         "L"
-      ],
-      "id": 31
-    },
-    {
-      "title": "doggo",
-      "price": "983",
-      "availableSizes": [
-        "L,M"
       ],
       "id": 32
     },
     {
-      "title": "papa",
-      "price": "986",
+      "title": "4",
+      "price": 8,
       "availableSizes": [
-        "L,M,XXL"
+        "XL"
       ],
       "id": 33
-    },
-    {
-      "title": "5",
-      "price": "kjk",
-      "availableSizes": [
-        "jbkjb"
-      ],
-      "id": 34
-    },
-    {
-      "title": "6",
-      "price": "77",
-      "availableSizes": [
-        "bjhb"
-      ],
-      "id": 35
-    },
-    {
-      "title": "7",
-      "price": "jhb",
-      "availableSizes": [
-        "jhbj"
-      ],
-      "id": 36
-    },
-    {
-      "title": "8",
-      "price": "bj",
-      "availableSizes": [
-        "hbj"
-      ],
-      "id": 37
-    },
-    {
-      "title": "10",
-      "price": "kjn",
-      "availableSizes": [
-        "kjn"
-      ],
-      "id": 38
-    },
-    {
-      "title": "11",
-      "price": "nkjn",
-      "availableSizes": [
-        "kjn"
-      ],
-      "id": 39
-    },
-    {
-      "title": "19",
-      "price": "88",
-      "availableSizes": [
-        "88"
-      ],
-      "id": 40
-    },
-    {
-      "title": "21",
-      "price": "jn",
-      "availableSizes": [
-        "kb"
-      ],
-      "id": 41
     }
   ]
 }
