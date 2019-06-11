@@ -11,8 +11,7 @@ const getProductsSelector = createSelector(
 const getCheckoutProductsSum = createSelector(
     getCheckoutItems,
     items => items.reduce((prevValue, nextValue) => {
-        console.log(prevValue, nextValue, 'reduce');
-        return prevValue + nextValue}
+        return prevValue + nextValue.price}
         ,0)
 );
 

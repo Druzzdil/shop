@@ -48,7 +48,6 @@ class Dashboard extends React.Component {
       this.props.proceedCheckoutSuccess(item)
     };
 
-
     showProductsNumber = () => {
         const filteredItems = this.props.products && this.props.products && this.props.products.filter(item=>item ? item.title : "");
         if (filteredItems.length === 1 ){
@@ -61,6 +60,7 @@ class Dashboard extends React.Component {
     };
 
     render() {
+        console.log(this.props.checkoutItems, 'checkoutItemsDash');
         const filteredItems = this.props.products.filter(item=>item ? item.title : "");
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>
@@ -87,7 +87,7 @@ class Dashboard extends React.Component {
                                         </Card.Text>
                                         <Button variant="primary">{item.price}</Button> &nbsp;
                                         <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
-                                        <Button onClick={()=>this.addProductToCheckout(item.id)}>Add Product</Button>
+                                        <Button onClick={()=>this.addProductToCheckout(item)}>Add Product</Button>
                                     </Card.Body>
                                 </Card>
                             )}
@@ -102,5 +102,7 @@ class Dashboard extends React.Component {
     }
 }
 
+
+// rebuild dashboard into functional component
 
 export default Dashboard

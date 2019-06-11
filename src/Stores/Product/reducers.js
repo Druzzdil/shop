@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
                 loading: true
             };
         case CHECKOUT_PRODUCT_SUCCESS:
-            console.log(action.payload, 'reducer');
+            console.log(action.payload, 'reducer111111');
             return {
                 ...state,
                 productList: [

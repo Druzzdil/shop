@@ -11,6 +11,17 @@ export const CHECKOUT_PRODUCT = 'CHECKOUT_PRODUCT'
 export const CHECKOUT_PRODUCT_SUCCESS = 'CHECKOUT_PRODUCT_SUCCESS'
 export const CHECKOUT_PRODUCT_FAILURE = 'CHECKOUT_PRODUCT_FAILURE'
 
+
+function makeActionCreator(type, ...argNames) {
+    return function(...args) {
+        const action = { type }
+        argNames.forEach((arg, index) => {
+            action[argNames[index]] = args[index]
+        })
+        return action
+    }
+}
+
 export const fetchProducts = (filters, payload) => ({
     type: FETCH_PRODUCTS,
     payload,

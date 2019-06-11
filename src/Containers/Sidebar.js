@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
     productList: state.productReducer.productList,
     sum: getCheckoutProductsSum(state),
     checkoutItems: state.productReducer.products.filter(addedItem => state.productReducer.productList ?
-        state.productReducer.productList.find(cartItem => cartItem === addedItem.id) : "" )
+        state.productReducer.productList.find(cartItem => cartItem.id === addedItem.id) : "" )
 });
 
 export default connect(

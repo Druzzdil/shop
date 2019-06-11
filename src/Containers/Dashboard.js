@@ -9,7 +9,9 @@ const mapStateToProps = state => ({
     products: getProductsSelector(state),
     productList: state.productReducer.productList,
     loading: state.productReducer.loading,
-    filters: state.filters.items
+    filters: state.filters.items,
+    checkoutItems: state.productReducer.products.filter(addedItem => state.productReducer.productList ?
+        state.productReducer.productList.find(cartItem => cartItem.id === addedItem.id) : "" )
 });
 
 const mapDispatchToProps = dispatch => ({
