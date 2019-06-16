@@ -18,7 +18,8 @@ class Dashboard extends React.Component {
         super(props);
         this.state = {
             filtered: "" || [],
-            productsState: [] || ""
+            productsState: [] || "",
+            matched: false
         }
     }
 
@@ -45,6 +46,10 @@ class Dashboard extends React.Component {
     };
 
     addProductToCheckout = (item) => {
+        let idx =  this.props.checkoutItems.find(item=>item.id) || "";
+        this.setState({
+            matched: item.id === idx.id
+        });
       this.props.proceedCheckoutSuccess(item)
     };
 
@@ -60,8 +65,9 @@ class Dashboard extends React.Component {
     };
 
     render() {
-        console.log(this.props.checkoutItems, 'checkoutItemsDash');
+        console.log(this.state.matched, 'state');
         const filteredItems = this.props.products.filter(item=>item ? item.title : "");
+        console.log(filteredItems, 'filtered');
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>
                 <Row>
@@ -77,8 +83,8 @@ class Dashboard extends React.Component {
                             {this.showProductsNumber()}
                         </div>
                         <Wrapper>
-                            {filteredItems.map(item =>
-                                <Card style={{ width: '15rem', margin: '10px' }}>
+                            {filteredItems.map((item, id) =>
+                                <Card style={{ width: '15rem', margin: '10px' }} key={id}>
                                     <Card.Img variant="top" src="https://picsum.photos/640/360" />
                                     <Card.Body>
                                         <Card.Title>{item.title}</Card.Title>
@@ -87,7 +93,11 @@ class Dashboard extends React.Component {
                                         </Card.Text>
                                         <Button variant="primary">{item.price}</Button> &nbsp;
                                         <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
-                                        <Button onClick={()=>this.addProductToCheckout(item)}>Add Product</Button>
+                                        <Button
+                                            disabled={this.state.matched}
+                                            onClick={()=>this.addProductToCheckout(item)}
+                                            >
+                                            Add Product</Button>
                                     </Card.Body>
                                 </Card>
                             )}
