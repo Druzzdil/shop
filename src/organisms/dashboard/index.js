@@ -19,7 +19,8 @@ class Dashboard extends React.Component {
         this.state = {
             filtered: "" || [],
             productsState: [] || "",
-            matched: false,
+            matched: "",
+            disabled: [],
             products: [],
             error: false,
             hasMore: true,
@@ -34,8 +35,6 @@ class Dashboard extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextState){
-        console.log(nextState, 111);
-        console.log(nextProps, 222);
         const { filters: nextFilters } = nextProps;
         if (nextProps.filters !== this.props.filters) {
             this.handleFetchProducts(nextFilters);
@@ -64,33 +63,26 @@ class Dashboard extends React.Component {
     };
 
     addProductToCheckout = (item) => {
-        this.props.proceedCheckoutSuccess(item)
-        const {flag} = this.state;
-        console.log(flag, '2222');
-        let idx =  this.props.checkoutItems.find(item=>item.id) || "";
-        if (flag === true || item.id === idx.id) {
-            this.setState({
-                matched: true
-            });
-        }
+        this.props.proceedCheckoutSuccess(item);
+        this.setState({
+            flag: true,
+            disabled: [...this.state.disabled, item.id]
+        })
     };
 
     showProductsNumber = () => {
-        const filteredItems = this.props.products && this.props.products && this.props.products.filter(item=>item ? item.title : "");
+        const filteredItems = this.props.products.filter(item=>item ? item.title : "");
         if (filteredItems.length === 1 ){
-           return  <dvi>{filteredItems.length} <span>Product Found</span> </dvi>
+           return  <div>{filteredItems.length} <span>Product Found</span> </div>
         } else if(filteredItems.length > 1) {
-            return <dvi>{filteredItems.length} <span>Products Found</span> </dvi>
+            return <div>{filteredItems.length} <span>Products Found</span> </div>
         } else if(filteredItems.length === 0){
             return <div>no products found</div>
         }
     };
 
     render() {
-        console.log(this.state.matched, 'matched');
-        console.log(this.props.checkoutItems, 'checkoutItems');
         const filteredItems = this.props.products.filter(item=>item ? item.title : "");
-        console.log(filteredItems, 'filtered');
         return (
             <Container style={{ padding: '1rem', marginTop: '7%' }}>
                 <Row>
@@ -106,8 +98,8 @@ class Dashboard extends React.Component {
                             {this.showProductsNumber()}
                         </div>
                         <Wrapper>
-                            {filteredItems.map((item, id) =>
-                                <Card style={{ width: '15rem', margin: '10px' }} key={id}>
+                            {filteredItems.map((item) =>
+                                <Card style={{ width: '15rem', margin: '10px' }} key={item.id}>
                                     <Card.Img variant="top" src="https://picsum.photos/640/360" />
                                     <Card.Body>
                                         <Card.Title>{item.title}</Card.Title>
@@ -117,10 +109,9 @@ class Dashboard extends React.Component {
                                         <Button variant="primary">{item.price}</Button> &nbsp;
                                         <div variant="primary">{item.availableSizes.map(item=><span>{item}</span>)}&nbsp;</div> &nbsp;
                                         <Button
-                                            disabled={this.state.matched}
-                                            onClick={()=>this.addProductToCheckout(item)}
-                                            >
-                                            Add Product</Button>
+                                            disabled={this.state.disabled.includes(item.id)}
+                                            onClick={()=>this.addProductToCheckout(item)}>
+                                            {this.state.flag ? 'Add Product' : 'Already Added'}</Button>
                                     </Card.Body>
                                 </Card>
                             )}
