@@ -19,8 +19,14 @@ class Dashboard extends React.Component {
         this.state = {
             filtered: "" || [],
             productsState: [] || "",
-            matched: false
-        }
+            matched: false,
+            products: [],
+            error: false,
+            hasMore: true,
+            isLoading: false,
+            users: [],
+            flag: false,
+        };
     }
 
     componentDidMount(){
@@ -28,10 +34,22 @@ class Dashboard extends React.Component {
     }
 
     componentWillReceiveProps(nextProps, nextState){
-        console.log(nextProps, 'nextProps');
+        console.log(nextState, 111);
+        console.log(nextProps, 222);
         const { filters: nextFilters } = nextProps;
         if (nextProps.filters !== this.props.filters) {
-            this.handleFetchProducts(nextFilters, undefined);
+            this.handleFetchProducts(nextFilters);
+        }
+    }
+
+    componentDidUpdate(nextProps) {
+        if (nextProps.checkoutItems !== this.props.checkoutItems){
+            console.log(nextProps.checkoutItems.length, 'length');
+            console.log(this.state.flag, '66666');
+            this.setState({
+                flag: true
+            });
+            console.log(this.state.flag, '77777');
         }
     }
 
@@ -46,11 +64,15 @@ class Dashboard extends React.Component {
     };
 
     addProductToCheckout = (item) => {
+        this.props.proceedCheckoutSuccess(item)
+        const {flag} = this.state;
+        console.log(flag, '2222');
         let idx =  this.props.checkoutItems.find(item=>item.id) || "";
-        this.setState({
-            matched: item.id === idx.id
-        });
-      this.props.proceedCheckoutSuccess(item)
+        if (flag === true || item.id === idx.id) {
+            this.setState({
+                matched: true
+            });
+        }
     };
 
     showProductsNumber = () => {
@@ -65,7 +87,8 @@ class Dashboard extends React.Component {
     };
 
     render() {
-        console.log(this.state.matched, 'state');
+        console.log(this.state.matched, 'matched');
+        console.log(this.props.checkoutItems, 'checkoutItems');
         const filteredItems = this.props.products.filter(item=>item ? item.title : "");
         console.log(filteredItems, 'filtered');
         return (
@@ -111,8 +134,5 @@ class Dashboard extends React.Component {
         );
     }
 }
-
-
-// rebuild dashboard into functional component
 
 export default Dashboard

@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import clsx from 'clsx';
+
+import ListContainer from '../productList/listContainer'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -93,9 +95,6 @@ function PersistentDrawerLeft({checkoutItems, sum}) {
         }
     }, [checkoutItems]);
 
-    console.log(checkoutItems, '00000   ');
-    console.log(sum, 'sum');
-
     function handleDrawerClose() {
         setOpen(false);
     }
@@ -159,7 +158,7 @@ function PersistentDrawerLeft({checkoutItems, sum}) {
                 </List>
                 <div>
                     <ProductList checkoutItems={checkoutItems} />
-                    <div>{sum}</div>
+                    <ListContainer><div>{sum}</div></ListContainer>
                 </div>
             </Drawer>
             <main

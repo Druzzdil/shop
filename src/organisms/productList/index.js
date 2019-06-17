@@ -1,6 +1,7 @@
 import React from 'react';
 import ListContainer from './listContainer'
 import ListElement from './listelement'
+import Select from '../../atoms/inputs/select'
 
 export const ProductList = ({checkoutItems}) => {
     return (
@@ -9,9 +10,10 @@ export const ProductList = ({checkoutItems}) => {
                 <ListElement>
                      <h6> {item.price}</h6>
                      <h6> {item.title}</h6>
+                    <Select/>
                 </ListElement>) : ""}
         </ListContainer>
     )
 };
 
-export default ProductList;
+export default React.memo(ProductList)
